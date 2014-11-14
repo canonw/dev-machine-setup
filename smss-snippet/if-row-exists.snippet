@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>If Row Exists</Title>
+			<Shortcut />
+			<Description>Conditional row exists block.</Description>
+			<Author>Ken Wong</Author>
+			<SnippetTypes>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>SchemaName</ID>
+					<ToolTip>Name of the schema</ToolTip>
+					<Default>dbo</Default>
+				</Literal>
+				<Literal>
+					<ID>TableName</ID>
+					<ToolTip>Name of the table/view</ToolTip>
+					<Default>MyTable</Default>
+				</Literal>
+				<Literal>
+					<ID>KeyColumnName</ID>
+					<ToolTip>Name of the key column</ToolTip>
+					<Default>Id</Default>
+				</Literal>
+				<Literal>
+					<ID>KeyColumnValue</ID>
+					<ToolTip>Value of the key column</ToolTip>
+					<Default>@Id</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="SQL"><![CDATA[IF (NOT EXISTS (SELECT 1 FROM $SchemaName$.$TableName$ WHERE $KeyColumnName$ = $KeyColumnValue$))
+BEGIN
+
+$selected$ $end$
+
+END]]></Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
